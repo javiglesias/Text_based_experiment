@@ -5,6 +5,7 @@
 #include <math.h>
 #include <time.h>
 #include "lib.h"
+#include <string.h>
 
 
 
@@ -19,6 +20,7 @@ int room_establish(int x)
 }
 void create_Map()
 {
+
 	//INICIALIZAMOS LAS HABITACIONES CON SUS DESCRIPCIONES
 	//ROOM 0
 	strcpy_s(rooms[0].description, ROOM0);
