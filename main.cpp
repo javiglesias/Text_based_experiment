@@ -5,7 +5,6 @@
 #include <math.h>
 #include <time.h>
 #include "lib.h"
-#include <string.h>
 
 
 
