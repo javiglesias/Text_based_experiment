@@ -26,6 +26,7 @@
 #define ROOM4 "Room 4 descripton."
 #endif
 
+//
 struct room
 {
 	char description[255];
