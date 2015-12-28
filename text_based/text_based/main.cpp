@@ -11,7 +11,7 @@
 int room_establish(int x)
 {
 	/*
-		ESTA FUNCION SE ENCARGA DE DETERMINAR DE FORMA ALEATORIA ENTRE TODAS LAS HABITACIONES 
+		ESTA FUNCION SE ENCARGA DE DETERMINAR DE FORMA ALEATORIA ENTRE TODAS LAS HABITACIONES
 		DONDE ESTARÁ EL ITEM QUE LA LLAMA
 	*/
 	srand(time(NULL)+x);
@@ -61,7 +61,7 @@ void create_Map()
 	strcpy_s(objects[0].desc2, "The KEY shine.");
 	objects[0].state = 0;
 	objects[0].got_it = 0;
-	std::cout << "Chest in Room: " 
+	std::cout << "Chest in Room: "
 		<<room_establish(1)
 		<< "\n";
 	objects[1].now_room = room_establish(1);
@@ -71,7 +71,7 @@ void create_Map()
 	objects[1].got_it = 0;
 	std::cout << "Lantern in Room: "
 		<< room_establish(2)
-		<< "\n"; 
+		<< "\n";
 	objects[2].now_room = room_establish(2);
 	strcpy_s(objects[2].desc1, "LANTERN");
 	strcpy_s(objects[2].desc2, "The LANTERN is off.");
@@ -182,7 +182,7 @@ void main(void)
 						if (now_Room == 2)
 						{
 							std::cout << "You hit with a very well built wall.\n";
-							break;	
+							break;
 						}
 						else if (now_Room == 5)
 						{
@@ -201,7 +201,7 @@ void main(void)
 								<< now_Room
 								<< "\n";
 						}
-						
+
 					}
 					else
 						std::cout << "You hit with a very well built wall.\n";
@@ -270,7 +270,7 @@ void main(void)
 							break;
 						}
 						finder = -1;
-						
+
 					}
 					else
 					{
