@@ -17,6 +17,7 @@ int room_establish(int x)
 	srand(time(NULL)+x);
 	return rand() % (MAP*MAP);
 }
+
 void create_Map()
 {
 
@@ -113,6 +114,7 @@ void main(void)
 	while (!done)//mientras que no se pase el juego seguira dentro del bucle pero cambiando opciones
 	{
 		//mostrar info de la habitacion actual
+		std::cout << PRINT_ROOM_0;
 		std::cout << "1-Exit\n0-Create Map\n";
 		//tomar entrada de jugador
 		std::cin >> done;

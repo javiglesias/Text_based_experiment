@@ -26,6 +26,11 @@
 #define ROOM4 "Room 4 descripton."
 #endif
 
+#ifndef PRINT_ROOM_0
+#define PRINT_ROOM_0 " _______\n|\t|\n|\t|\n|\t|\n|\t|\n|_______|\n"
+#endif // !PRINT_ROOM_0
+
+
 //
 struct room
 {
@@ -44,3 +49,10 @@ struct inventory
 {
 	int obj1 = -1, obj2 = -1, obj3 = -1, obj4 = -1;
 }bag;
+
+typedef struct rooms
+{
+	char description[140];
+	char puerta[5];
+	//north, south, east, west
+} roome;
