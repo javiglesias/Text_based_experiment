@@ -51,8 +51,10 @@ int room_establish(int x)
 }
 void create_Map()
 {
-	//INICIALIZAMOS LAS HABITACIONES CON SUS DESCRIPCIONES
-	pj1.actual_room(mazz.createDungeon()[0]);
+	//HERE WE CREATE THE DUNGEON ITSELF.
+	pj1.set_Mazz(mazz.createDungeon());
+	//AND WE PUT OWR CHARACTER ON A ROOM 0
+	pj1.set_room();
 }
 /*int find_objects(int now_Room)
 {

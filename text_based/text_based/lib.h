@@ -46,21 +46,28 @@
 typedef struct room
 {
 	int id;
-	char description[255];
+	char description[2];
 	room *north, *south, *east, *west;
-}room;
+};
 
 class Dungeon {
 	public:
 		room *createDungeon() { 
-			room rooms[10];
+			room rooms[9];
 			for (int i = 0; i < 10; i++) rooms[i].id = i;
 			rooms[0].north = rooms[1].north = rooms[2].north = NULL;
 			rooms[0].west= rooms[3].west = rooms[6].west = NULL;
 			rooms[2].east = rooms[5].east = rooms[8].east = NULL;
 			rooms[6].south = rooms[7].south = rooms[8].south = NULL;
+			rooms[1].west = rooms[3].north = &rooms[0];
+			rooms[0].east = rooms[2].west = rooms[4].north = &rooms[1];
+			rooms[1].east = rooms[5].north = &rooms[2];
 			rooms[0].south = rooms[6].north = rooms[4].west =  &rooms[3];
 			rooms[1].south = rooms[3].east = rooms[7].north = rooms[5].west = &rooms[4];
+			rooms[2].south = rooms[4].east = rooms[8].north = &rooms[5];
+			rooms[3].south = rooms[7].west = &rooms[6];
+			rooms[4].south = rooms[6].east = rooms[8].west = &rooms[7];
+			rooms[5].south = rooms[7].east = &rooms[8];
 			return rooms;
 		};
 		~Dungeon(){};
@@ -82,14 +89,15 @@ class Character {
 		long health, defense, attack;
 		STRING char_class = "";
 		object inventory[2];
-		room now_room;
+		room now_room, *mazzmorra;
 	public:
-		void actual_room( room now){now_room = now;};
 		int _room(){return now_room.id;};
 		void set_name(STRING _name){ name = _name; };
 		void set_class(STRING _class) { char_class =_class; };
 		STRING get_class(){return char_class;};
 		STRING get_name(){return name;};
+		bool set_Mazz(room *mazz){mazzmorra = mazz; return true;};
+		bool set_room(){now_room = mazzmorra[0]; return true;};
 		void move(char direction){
 			switch (direction) {
 				case 'N':
