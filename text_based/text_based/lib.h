@@ -54,7 +54,7 @@ class Dungeon {
 	public:
 		room *createDungeon() { 
 			room rooms[9];
-			for (int i = 0; i < 10; i++) rooms[i].id = i;
+			for (int i = 0; i <9; i++) rooms[i].id = i;
 			rooms[0].north = rooms[1].north = rooms[2].north = NULL;
 			rooms[0].west= rooms[3].west = rooms[6].west = NULL;
 			rooms[2].east = rooms[5].east = rooms[8].east = NULL;
@@ -89,42 +89,42 @@ class Character {
 		long health, defense, attack;
 		STRING char_class = "";
 		object inventory[2];
-		room now_room, *mazzmorra;
+		room *now_room, *mazzmorra;
 	public:
-		int _room(){return now_room.id;};
+		int _room(){return now_room->id;};
 		void set_name(STRING _name){ name = _name; };
 		void set_class(STRING _class) { char_class =_class; };
 		STRING get_class(){return char_class;};
 		STRING get_name(){return name;};
-		bool set_Mazz(room *mazz){mazzmorra = mazz; return true;};
-		bool set_room(){now_room = mazzmorra[0]; return true;};
+		bool set_Mazz(room *mazz){this->mazzmorra = mazz; return true;};
+		bool set_room(){now_room = &mazzmorra[0]; return true;};
 		void move(char direction){
 			switch (direction) {
 				case 'N':
-					std::cout << "north" << std::endl;
-					if(now_room.north != NULL)
-						now_room = *now_room.north;
+					LOG("north");
+					if(now_room->north != NULL)
+						now_room = now_room->north;
 					else
 						now_room = now_room;
 					break;
 				case 'S':
-					std::cout << "sur" << std::endl;
-					if (now_room.south != NULL)
-						now_room = *now_room.south;
+					LOG("south");
+					if (now_room->south != NULL)
+						now_room = now_room->south;
 					else
 						now_room = now_room;
 					break;
 				case 'E':
-					std::cout << "east" << std::endl;
-					if (now_room.east != NULL)
-						now_room = *now_room.east;
+					LOG("east");
+					if (now_room->east != NULL)
+						now_room = now_room->east;
 					else
 						now_room = now_room;
 					break;
 				case 'W':
-					std::cout << "west" << std::endl;
-					if (now_room.west != NULL)
-						now_room = *now_room.west;
+					LOG("west");
+					if (now_room->west != NULL)
+						now_room = now_room->west;
 					else
 						now_room = now_room;
 					break;
@@ -132,5 +132,6 @@ class Character {
 					break;
 			}
 		};
+		Character(){};
 		~Character() {};
 };

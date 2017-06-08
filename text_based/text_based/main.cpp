@@ -52,9 +52,11 @@ int room_establish(int x)
 void create_Map()
 {
 	//HERE WE CREATE THE DUNGEON ITSELF.
-	pj1.set_Mazz(mazz.createDungeon());
-	//AND WE PUT OWR CHARACTER ON A ROOM 0
-	pj1.set_room();
+	if (!pj1.set_Mazz(mazz.createDungeon()) || !(pj1.set_room())) {
+		LOG("Error al crear la mazzmorra");
+	}
+	//AND WE PUT OWR CHARACTER ON THE ROOM 0
+	
 }
 /*int find_objects(int now_Room)
 {
@@ -127,7 +129,6 @@ void main(void)
 			}
 			//instanciamos el mapa de la dungeon para esta partida.
 			create_Map();
-			std::cout << pj1._room() << std::endl;
 			done2 = false;
 			while (!done2)
 			{
