@@ -102,36 +102,26 @@ class Character {
 			switch (direction) {
 				case 'N':
 					LOG("north");
-					if(now_room->north != NULL)
-						now_room = now_room->north;
-					else
-						now_room = now_room;
 					break;
 				case 'S':
 					LOG("south");
-					if (now_room->south != NULL)
-						now_room = now_room->south;
-					else
-						now_room = now_room;
+					
 					break;
 				case 'E':
 					LOG("east");
-					if (now_room->east != NULL)
-						now_room = now_room->east;
-					else
-						now_room = now_room;
+					
 					break;
 				case 'W':
 					LOG("west");
-					if (now_room->west != NULL)
-						now_room = now_room->west;
-					else
-						now_room = now_room;
 					break;
 				default:
 					break;
 			}
 		};
 		Character(){};
+		Character(STRING _name, STRING _class){
+			name = _name;
+			char_class = _class;
+		};
 		~Character() {};
 };
